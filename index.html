@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>Test</title>
+	<link href="jquery-ui.css" rel="stylesheet">
+	<style>
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+
+	select {
+		width: 200px;
+	}
+
+	</style>
+</head>
+
+<body>
+
+
+<div id="jobInput">
+<h1>Add a new Job</h1>
+
+<h2>Use job ad creator to help create a job ad?</h2><br />
+<h2>
+	<input type="radio" name="asdf">Yes, use job ad creator
+  <input type="radio" name="asdf">No, I'll create a job ad myself
+</h2>
+<hr>
+
+
+<!-- Jobs -->
+<h2 class="jobTitle">Job Title</h2>
+<div>
+	<input id="autocompleteJobs" title="type &quot;a&quot;" placeholder="Start typing the job title...">
+</div>
+<hr>
+
+<!-- Location -->
+<h2 class="location">Location</h2>
+<div>
+	<input id="autocompleteLoc" title="type &quot;a&quot;" placeholder="Start typing the location...">
+</div>
+
+
+<input type="radio" name="remote">This is a remote or telecommute job
+<hr>
+
+<!-- Skills -->
+<h2 class="skills">Choose the skills you consider to be essential to</h2>
+	<h3>Truck Driver Skills Here</h3>
+	<div id="skillset">
+
+			<input type="radio" id="skill1" name="skill"><label for="skill1">Over 25 years old</label>
+			<input type="radio" id="skill2" name="skill1"><label for="skill2">Driver license</label>
+			<input type="radio" id="skill3" name="skill2"><label for="skill3">Clean driving record</label>
+			<input type="radio" id="skill4" name="skill3"><label for="skill4">Flexible availability</label>
+			<input type="radio" id="skill5" name="skill4"><label for="skill5">Heavy Rigid License</label>
+			<input type="radio" id="skill6" name="skill5"><label for="skill6">Presentable</label>
+			<input type="radio" id="skill7" name="skill6"><label for="skill7">Punctual</label>
+			<input type="radio" id="skill8" name="skill7"><label for="skill8">Friendly</label>
+			<input type="radio" id="skill9" name="skill8"><label for="skill9">"Can do" attitude</label>
+			<input type="radio" id="skill10" name="skill9"><label for="skill10">Excellent Presentation</label>
+	</div>
+
+<hr>
+
+
+<!-- Benefits -->
+
+<h2 class="benefits">What benefits do you offer?</h2>
+<form style="margin-top: 1em; margin-bottom: 1em;">
+	<div id="radioset">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">401k</label>
+		<input type="radio" id="radio2" name="radio1"><label for="radio2">Medical Insurance</label>
+		<input type="radio" id="radio3" name="radio2"><label for="radio3">Dental Insurance</label>
+		<input type="radio" id="radio4" name="radio3"><label for="radio4">Day Shift</label>
+		<input type="radio" id="radio5" name="radio4"><label for="radio5">Long Term Care Insurance</label>
+		<input type="radio" id="radio6" name="radio5"><label for="radio6">Paid Sick Leave</label>
+		<input type="radio" id="radio7" name="radio6"><label for="radio7">Paid Military Leave</label>
+		<input type="radio" id="radio8" name="radio7"><label for="radio8">Paid Holidays</label>
+	</div>
+</form>
+<hr>
+
+<h2><a id="company">Describe your company</a></h2>
+
+<div id="company">
+    <p>
+        <label for="company"><input type="text" id="compText" size="150"  name="p_scnt" value="" placeholder="About your company" /></label>
+    </p>
+</div>
+</div>
+
+<div id="jobListing">
+	<h1>Preview of your job ad</h1>
+	<div id="container">
+	<h2>Job Title</h2>
+		<p>Populate with job title and location</p>
+	<h2>About the company</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tristique est, vel rhoncus nibh fermentum eu. Ut non odio quis quam bibendum facilisis. Nulla facilisi. In consectetur leo magna, ut semper risus scelerisque sed. Proin blandit nisl sit amet lacus malesuada elementum.</p>
+	<h2>About the job</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tristique est, vel rhoncus nibh fermentum eu. Ut non odio quis quam bibendum facilisis. Nulla facilisi. In consectetur leo magna, ut semper risus scelerisque sed. Proin blandit nisl sit amet lacus malesuada elementum.</p>
+	<h2>Skills required:</h2>
+		<div>
+			<ul>
+				<li id="truckerSkills"></li>
+			</ul>
+		</div>
+	<h2>Benefits</h2>
+		<div>
+			<ul>
+				<li id="benefits"></li>
+			</ul>
+		</div>
+	</div></br>
+
+		<input id="publish" type="submit" value="Publish Your Job">
+
+</div>
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+
+
+var truckerSkills = [
+	"Over 25 years old",
+	"Driver License",
+	"Clean driving record",
+	"Flexible availability",
+	"Heavy Rigid License",
+	"Presentable",
+	"Puntual",
+	"Friendly",
+	"'Can do' attitude",
+	"Excellent Presentation",
+];
+
+for(var i=0;i<truckerSkills.length;i++) {
+    $('#truckerSkills').append(truckerSkills[i]);
+	};
+
+var benefits = [
+	"Medical Insurance",
+	"Dental Insurance",
+	"Day Shift",
+	"Long Term Care Insurance",
+	"Paid Sick Leave",
+	"Paid Military Leave",
+	"Paid Holidays",
+];
+
+for(var i=0;i<benefits.length;i++) {
+    $('#benefits').append(benefits[i]);
+};
+
+
+var availableJobs = [
+	"Truck Driver",
+	"Software Engineer",
+	"Rail Engineer",
+	"Civil Engineer"
+];
+$( "#autocompleteJobs" ).autocomplete({
+	source: availableJobs
+});
+
+var availableLocations = [
+	"San Diego, CA",
+	"Manchester City, England",
+	"San Francisco, CA",
+	"Ann Arbor, MI",
+	"New York, NY"
+];
+$( "#autocompleteLoc" ).autocomplete({
+	source: availableLocations
+});
+
+$( "#button" ).button();
+$( "#radioset" ).buttonset();
+$( "#skillset" ).buttonset();
+
+
+</script>
+</body>
+</html>
